@@ -15,21 +15,30 @@ git clone ssh://....git
 3.	Open cmder program and change directory to the location where you have cloned the project (step 2).
 
 4.	Login your docker image repository using your esp credentials:
-
+```
 docker login ...hub....com
 #Username: Enter your windows username
 #Password: your windows password
 #optional you'll be asked to enter your email.
+```
+
 5.	Edit the file docker-compose.yml by changing the port that you are going to use, according to your needs (port 80, for example, on my station was already in use by another service). After this update, start the lifecycle of the app using the docker-compose.yml and Dockerfile, by running:
+```
 docker-compose up
+```
+
 6.	The initial installation will take some time, and the last outputted line should be: "Attaching to container1name, container2Name" /// and all your containers will be listed here. We assume that container1name is the one that has the node server, and container2name is the one with the source code of your project.
 
 You can now inspect your virtual environment by listing your containers:
+
+```
 docker container ls --all
 CONTAINER ID        IMAGE                                             COMMAND                  CREATED
              STATUS              PORTS                                            NAMES
 f92c9785b0d1        ...hub...com   "bash -c 'cd /var/ww…"   About an hour ago   Up 6 minutes        0.0.0.0:35545->35359/tcp, 0.0.0.0:80->9000/tcp   container1name
 96f34dafa893        ubuntu:14.04                                      "bash -c 'mkdir -p /…"   About an hour ago   Up About an hour                                                     container2name
+
+```
 
 In this case the port 80 is used by the Windows system, for the container2name container and port 9000 is used by Docker’s container2name container. These ports are the ones that you previously configured in the docker-composer.yml file.
 
