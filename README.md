@@ -38,19 +38,20 @@ docker exec -it container2name bash
 This command executes bash inside the container (similar with ssh into a machine).
 
 8.	Once inside the container, you can perform typical tasks like:
-``#these should be run on cold start (after a fresh container build)
+```
+#these should be run on cold start (after a fresh container build)
 npm install
 
 and
 grunt serve
-``
+```
 9.	Open another cmder and run:
 docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" container2name
 
 This will return the IP address of your Docker container machine. With previous Docker versions this IP address was used in the hosts file of the system to access our application from the host (your computer). However, with Docker installation on Windows 10 I do not use this IP address.
 
 10.	Run cmder as Admin and change the C:/Windows/System32/drivers/etc/hosts, appending the mapping of your local site to the localhost IP address and also to Docker’s IP address:
-``
+```
 cd C:\Windows\System32\drivers\etc
 vim hosts
 # Press insert
@@ -58,7 +59,7 @@ vim hosts
 127.0.0.1  webdev
 
 # press esc twice and ‘:wq’ to write and quit the edit 
-``
+```
 11.	Open your favorite browser and access " http://webdev/ ". You should see the app running smoothly. 
 
 Occasionally it happens that you get disconnected from the server with the docker image the you use to compose your containers. The error message looks something similar: "ERROR: Error: image ... not found". In this case you have to login again. To login run:
