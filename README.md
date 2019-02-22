@@ -90,6 +90,10 @@ jade --client --no-debug jadetemplate.jade //transpile jade into js
 p I am a paragraph containing the #{varMe}
 
 ...
+# Debuging
+
+If you want to see the json data transmited via HTTPrequests, apend the string: ?onlyData=true to the bowser URL link and after
+that write in the consola JSON.stringify(pageData) to see the Json object.
 
 # code-academy-notes
 Code Academy 2017 lectures notes
